@@ -12,6 +12,7 @@
       color: #333;
       margin: 0;
       padding: 0;
+      overflow-x: hidden;
     }
 
     h1 {
@@ -62,6 +63,21 @@
       font-size: 1rem;
       color: #fff;
     }
+
+    /* Floating hearts */
+    .heart {
+      position: fixed;
+      bottom: -10px;
+      font-size: 20px;
+      color: #ff4d6d;
+      animation: floatUp 5s linear forwards;
+      pointer-events: none;
+    }
+
+    @keyframes floatUp {
+      from { transform: translateY(0); opacity: 1; }
+      to { transform: translateY(-110vh); opacity: 0; }
+    }
   </style>
 </head>
 <body>
@@ -70,18 +86,18 @@
 
   <!-- Photo Carousel -->
   <div class="slideshow-container">
-    <div class="mySlides fade"><img src="P1.jpg" alt="Memory 1"></div>
-    <div class="mySlides fade"><img src="P2.jpg" alt="Memory 2"></div>
-    <div class="mySlides fade"><img src="P3.jpg" alt="Memory 3"></div>
-    <div class="mySlides fade"><img src="P4.jpg" alt="Memory 4"></div>
-    <div class="mySlides fade"><img src="P5.jpg" alt="Memory 5"></div>
-    <div class="mySlides fade"><img src="P6.jpg" alt="Memory 6"></div>
-    <div class="mySlides fade"><img src="P7.jpg" alt="Memory 7"></div>
-    <div class="mySlides fade"><img src="P8.jpg" alt="Memory 8"></div>
-    <div class="mySlides fade"><img src="P9.jpg" alt="Memory 9"></div>
-    <div class="mySlides fade"><img src="P10.jpg" alt="Memory 10"></div>
-    <div class="mySlides fade"><img src="P11.jpg" alt="Memory 11"></div>
-    <div class="mySlides fade"><img src="P12.jpg" alt="Memory 12"></div>
+    <div class="mySlides fade"><img src="P1.JPG" alt="Memory 1"></div>
+    <div class="mySlides fade"><img src="P2.JPG" alt="Memory 2"></div>
+    <div class="mySlides fade"><img src="P3.JPG" alt="Memory 3"></div>
+    <div class="mySlides fade"><img src="P4.JPG" alt="Memory 4"></div>
+    <div class="mySlides fade"><img src="P5.JPG" alt="Memory 5"></div>
+    <div class="mySlides fade"><img src="P6.JPG" alt="Memory 6"></div>
+    <div class="mySlides fade"><img src="P7.JPG" alt="Memory 7"></div>
+    <div class="mySlides fade"><img src="P8.JPG" alt="Memory 8"></div>
+    <div class="mySlides fade"><img src="P9.JPG" alt="Memory 9"></div>
+    <div class="mySlides fade"><img src="P10.JPG" alt="Memory 10"></div>
+    <div class="mySlides fade"><img src="P11.JPG" alt="Memory 11"></div>
+    <div class="mySlides fade"><img src="P12.JPG" alt="Memory 12"></div>
   </div>
 
   <footer>With Love ❤️ Shubham & Priya | 29th Nov, 2025</footer>
@@ -121,6 +137,20 @@
       slides[slideIndex-1].style.display = "block";
       setTimeout(showSlides, 3000); // Change image every 3 sec
     }
+
+    // Floating hearts
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      heart.innerHTML = "💖";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.fontSize = Math.random() * 20 + 20 + "px";
+      document.body.appendChild(heart);
+
+      setTimeout(() => heart.remove(), 5000);
+    }
+
+    setInterval(createHeart, 800);
   </script>
 </body>
 </html>
