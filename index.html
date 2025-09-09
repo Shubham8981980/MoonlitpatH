@@ -9,7 +9,7 @@
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       text-align: center;
       background: linear-gradient(135deg, #ffdde1, #ee9ca7);
-      color: #333;
+      color: #660000; /* Dark maroon text */
       margin: 0;
       padding: 0;
       overflow-x: hidden;
@@ -17,14 +17,13 @@
 
     h1 {
       margin-top: 20px;
-      font-size: 2.5rem;
-      color: #fff;
+      font-size: 3rem; /* Increased */
+      font-weight: bold;
     }
 
     #countdown {
-      font-size: 2rem;
+      font-size: 2.2rem; /* Slightly bigger */
       margin: 20px 0;
-      color: #fff;
       font-weight: bold;
     }
 
@@ -60,8 +59,8 @@
 
     footer {
       margin: 20px;
-      font-size: 1rem;
-      color: #fff;
+      font-size: 1.2rem;
+      font-weight: bold;
     }
 
     /* Floating hearts */
@@ -69,7 +68,7 @@
       position: fixed;
       bottom: -10px;
       font-size: 20px;
-      color: #ff4d6d;
+      color: #b30000; /* Deep red */
       animation: floatUp 5s linear forwards;
       pointer-events: none;
     }
@@ -142,7 +141,7 @@
     function createHeart() {
       const heart = document.createElement("div");
       heart.className = "heart";
-      heart.innerHTML = "💖";
+      heart.innerHTML = "❤️"; // Deep red heart only
       heart.style.left = Math.random() * 100 + "vw";
       heart.style.fontSize = Math.random() * 20 + 20 + "px";
       document.body.appendChild(heart);
