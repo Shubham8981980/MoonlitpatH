@@ -9,31 +9,31 @@
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       text-align: center;
       background: linear-gradient(135deg, #ffdde1, #ee9ca7);
-      color: #222; /* darker text */
+      color: #222;
       margin: 0;
       padding: 0;
     }
 
     h1 {
       margin-top: 30px;
-      font-size: 3rem; /* slightly bigger */
+      font-size: 3rem;
       color: #b30000; /* deep red */
     }
 
     #countdown {
-      font-size: 2.2rem;
-      margin: 20px 0;
-      color: #222; /* dark gray for visibility */
+      font-size: 2rem;
+      margin: 15px 0;
+      color: #222;
       font-weight: bold;
     }
 
     /* Slideshow styles */
     .slideshow-container {
-      width: 70%; /* more subtle size */
-      max-width: 900px;
+      width: 55%; /* smaller size */
+      max-width: 700px;
       position: relative;
-      margin: 40px auto;
-      border-radius: 15px;
+      margin: 30px auto;
+      border-radius: 12px;
       overflow: hidden;
       box-shadow: 0 6px 18px rgba(0,0,0,0.25);
     }
@@ -45,7 +45,7 @@
     .mySlides img {
       width: 100%;
       height: auto;
-      border-radius: 15px;
+      border-radius: 12px;
     }
 
     /* Fade animation */
@@ -60,18 +60,18 @@
     }
 
     footer {
-      margin: 30px 0;
+      margin: 20px 0;
       font-size: 1.2rem;
       color: #222;
       font-weight: 500;
     }
 
-    /* Floating hearts animation */
+    /* Floating hearts */
     .heart {
       position: fixed;
       top: -10px;
-      color: #b30000; /* deep red */
-      font-size: 22px;
+      color: #b30000;
+      font-size: 20px;
       animation: fall linear forwards;
       z-index: 9999;
       pointer-events: none;
@@ -81,6 +81,37 @@
       to {
         transform: translateY(110vh);
         opacity: 0;
+      }
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2rem;
+        margin-top: 20px;
+      }
+
+      #countdown {
+        font-size: 1.5rem;
+      }
+
+      .slideshow-container {
+        width: 85%; /* bigger on mobile so it fits better */
+        max-width: 95%;
+        margin: 20px auto;
+      }
+
+      footer {
+        font-size: 1rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 1.8rem;
+      }
+      #countdown {
+        font-size: 1.3rem;
       }
     }
   </style>
@@ -140,7 +171,7 @@
       slideIndex++;
       if (slideIndex > slides.length) {slideIndex = 1}
       slides[slideIndex-1].style.display = "block";
-      setTimeout(showSlides, 3500); // Change image every 3.5 sec
+      setTimeout(showSlides, 3500);
     }
 
     // Floating hearts
