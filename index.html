@@ -9,32 +9,33 @@
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       text-align: center;
       background: linear-gradient(135deg, #ffdde1, #ee9ca7);
-      color: #660000; /* Dark maroon text */
+      color: #222; /* darker text */
       margin: 0;
       padding: 0;
-      overflow-x: hidden;
     }
 
     h1 {
-      margin-top: 20px;
-      font-size: 3rem; /* Increased */
-      font-weight: bold;
+      margin-top: 30px;
+      font-size: 3rem; /* slightly bigger */
+      color: #b30000; /* deep red */
     }
 
     #countdown {
-      font-size: 2.2rem; /* Slightly bigger */
+      font-size: 2.2rem;
       margin: 20px 0;
+      color: #222; /* dark gray for visibility */
       font-weight: bold;
     }
 
     /* Slideshow styles */
     .slideshow-container {
-      max-width: 90%;
+      width: 70%; /* more subtle size */
+      max-width: 900px;
       position: relative;
-      margin: 30px auto;
-      border-radius: 20px;
+      margin: 40px auto;
+      border-radius: 15px;
       overflow: hidden;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.25);
     }
 
     .mySlides {
@@ -43,7 +44,8 @@
 
     .mySlides img {
       width: 100%;
-      border-radius: 20px;
+      height: auto;
+      border-radius: 15px;
     }
 
     /* Fade animation */
@@ -58,45 +60,49 @@
     }
 
     footer {
-      margin: 20px;
+      margin: 30px 0;
       font-size: 1.2rem;
-      font-weight: bold;
+      color: #222;
+      font-weight: 500;
     }
 
-    /* Floating hearts */
+    /* Floating hearts animation */
     .heart {
       position: fixed;
-      bottom: -10px;
-      font-size: 20px;
-      color: #b30000; /* Deep red */
-      animation: floatUp 5s linear forwards;
+      top: -10px;
+      color: #b30000; /* deep red */
+      font-size: 22px;
+      animation: fall linear forwards;
+      z-index: 9999;
       pointer-events: none;
     }
 
-    @keyframes floatUp {
-      from { transform: translateY(0); opacity: 1; }
-      to { transform: translateY(-110vh); opacity: 0; }
+    @keyframes fall {
+      to {
+        transform: translateY(110vh);
+        opacity: 0;
+      }
     }
   </style>
 </head>
 <body>
-  <h1>💍 Shubham & Priya 💍<br>Wedding Countdown</h1>
+  <h1>❤️ Shubham & Priya ❤️<br>Wedding Countdown</h1>
   <div id="countdown"></div>
 
   <!-- Photo Carousel -->
   <div class="slideshow-container">
-    <div class="mySlides fade"><img src="P1.JPG" alt="Memory 1"></div>
-    <div class="mySlides fade"><img src="P2.JPG" alt="Memory 2"></div>
-    <div class="mySlides fade"><img src="P3.JPG" alt="Memory 3"></div>
-    <div class="mySlides fade"><img src="P4.JPG" alt="Memory 4"></div>
-    <div class="mySlides fade"><img src="P5.JPG" alt="Memory 5"></div>
-    <div class="mySlides fade"><img src="P6.JPG" alt="Memory 6"></div>
-    <div class="mySlides fade"><img src="P7.JPG" alt="Memory 7"></div>
-    <div class="mySlides fade"><img src="P8.JPG" alt="Memory 8"></div>
-    <div class="mySlides fade"><img src="P9.JPG" alt="Memory 9"></div>
-    <div class="mySlides fade"><img src="P10.JPG" alt="Memory 10"></div>
-    <div class="mySlides fade"><img src="P11.JPG" alt="Memory 11"></div>
-    <div class="mySlides fade"><img src="P12.JPG" alt="Memory 12"></div>
+    <div class="mySlides fade"><img src="P1.jpg" alt="Memory 1"></div>
+    <div class="mySlides fade"><img src="P2.jpg" alt="Memory 2"></div>
+    <div class="mySlides fade"><img src="P3.jpg" alt="Memory 3"></div>
+    <div class="mySlides fade"><img src="P4.jpg" alt="Memory 4"></div>
+    <div class="mySlides fade"><img src="P5.jpg" alt="Memory 5"></div>
+    <div class="mySlides fade"><img src="P6.jpg" alt="Memory 6"></div>
+    <div class="mySlides fade"><img src="P7.jpg" alt="Memory 7"></div>
+    <div class="mySlides fade"><img src="P8.jpg" alt="Memory 8"></div>
+    <div class="mySlides fade"><img src="P9.jpg" alt="Memory 9"></div>
+    <div class="mySlides fade"><img src="P10.jpg" alt="Memory 10"></div>
+    <div class="mySlides fade"><img src="P11.jpg" alt="Memory 11"></div>
+    <div class="mySlides fade"><img src="P12.jpg" alt="Memory 12"></div>
   </div>
 
   <footer>With Love ❤️ Shubham & Priya | 29th Nov, 2025</footer>
@@ -134,19 +140,21 @@
       slideIndex++;
       if (slideIndex > slides.length) {slideIndex = 1}
       slides[slideIndex-1].style.display = "block";
-      setTimeout(showSlides, 3000); // Change image every 3 sec
+      setTimeout(showSlides, 3500); // Change image every 3.5 sec
     }
 
     // Floating hearts
     function createHeart() {
       const heart = document.createElement("div");
       heart.className = "heart";
-      heart.innerHTML = "❤️"; // Deep red heart only
+      heart.innerText = "❤️";
       heart.style.left = Math.random() * 100 + "vw";
-      heart.style.fontSize = Math.random() * 20 + 20 + "px";
+      heart.style.animationDuration = (2 + Math.random() * 3) + "s"; 
       document.body.appendChild(heart);
 
-      setTimeout(() => heart.remove(), 5000);
+      setTimeout(() => {
+        heart.remove();
+      }, 5000);
     }
 
     setInterval(createHeart, 800);
