@@ -21,11 +21,11 @@
       font-size: 1.1rem;
       font-weight: 600;
       font-family: 'Georgia', serif;
-      padding: 6px 10px;  /* smaller */
+      padding: 6px 10px;
       margin: 0;
       letter-spacing: 1px;
       text-transform: capitalize;
-      border-top: 2px solid #e6b800;  /* gold accent */
+      border-top: 2px solid #e6b800;
       border-bottom: 2px solid #e6b800;
       box-shadow: 0 1px 4px rgba(0,0,0,0.08);
     }
@@ -54,7 +54,7 @@
 
     /* Slideshow styles */
     .slideshow-container {
-      width: 45%; /* smaller image size */
+      width: 45%;
       max-width: 550px;
       position: relative;
       margin: 20px auto;
@@ -91,20 +91,20 @@
       font-weight: 500;
     }
 
-    /* Floating hearts */
+    /* Floating hearts (bottom to top) */
     .heart {
       position: fixed;
-      top: -10px;
+      bottom: -20px; /* start below viewport */
       color: #b30000;
       font-size: 20px;
-      animation: fall linear forwards;
+      animation: rise linear forwards;
       z-index: 9999;
       pointer-events: none;
     }
 
-    @keyframes fall {
+    @keyframes rise {
       to {
-        transform: translateY(110vh);
+        transform: translateY(-110vh);
         opacity: 0;
       }
     }
@@ -213,7 +213,7 @@
       setTimeout(showSlides, 3500);
     }
 
-    // Floating hearts
+    // Floating hearts (bottom to top)
     function createHeart() {
       const heart = document.createElement("div");
       heart.className = "heart";
