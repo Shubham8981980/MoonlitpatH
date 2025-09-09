@@ -14,25 +14,34 @@
       padding: 0;
     }
 
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
     h1 {
-      margin-top: 30px;
+      margin-top: 20px;
       font-size: 3rem;
       color: #b30000; /* deep red */
     }
 
     #countdown {
       font-size: 2rem;
-      margin: 15px 0;
+      margin: 15px 0 30px 0;
       color: #222;
       font-weight: bold;
     }
 
     /* Slideshow styles */
     .slideshow-container {
-      width: 55%; /* smaller size */
+      width: 55%; /* smaller size for desktop */
       max-width: 700px;
       position: relative;
-      margin: 30px auto;
+      margin: 20px auto;
       border-radius: 12px;
       overflow: hidden;
       box-shadow: 0 6px 18px rgba(0,0,0,0.25);
@@ -60,7 +69,7 @@
     }
 
     footer {
-      margin: 20px 0;
+      margin: 25px 0;
       font-size: 1.2rem;
       color: #222;
       font-weight: 500;
@@ -88,55 +97,59 @@
     @media (max-width: 768px) {
       h1 {
         font-size: 2rem;
-        margin-top: 20px;
+        margin-top: 10px;
       }
 
       #countdown {
         font-size: 1.5rem;
+        margin-bottom: 20px;
       }
 
       .slideshow-container {
-        width: 85%; /* bigger on mobile so it fits better */
+        width: 85%;
         max-width: 95%;
-        margin: 20px auto;
+        margin: 10px auto;
       }
 
       footer {
         font-size: 1rem;
+        margin-top: 20px;
       }
     }
 
     @media (max-width: 480px) {
       h1 {
-        font-size: 1.8rem;
+        font-size: 1.7rem;
       }
       #countdown {
-        font-size: 1.3rem;
+        font-size: 1.2rem;
       }
     }
   </style>
 </head>
 <body>
-  <h1>❤️ Shubham & Priya ❤️<br>Wedding Countdown</h1>
-  <div id="countdown"></div>
+  <div class="container">
+    <h1>❤️ Shubham & Priya ❤️<br>Wedding Countdown</h1>
+    <div id="countdown"></div>
 
-  <!-- Photo Carousel -->
-  <div class="slideshow-container">
-    <div class="mySlides fade"><img src="P1.jpg" alt="Memory 1"></div>
-    <div class="mySlides fade"><img src="P2.jpg" alt="Memory 2"></div>
-    <div class="mySlides fade"><img src="P3.jpg" alt="Memory 3"></div>
-    <div class="mySlides fade"><img src="P4.jpg" alt="Memory 4"></div>
-    <div class="mySlides fade"><img src="P5.jpg" alt="Memory 5"></div>
-    <div class="mySlides fade"><img src="P6.jpg" alt="Memory 6"></div>
-    <div class="mySlides fade"><img src="P7.jpg" alt="Memory 7"></div>
-    <div class="mySlides fade"><img src="P8.jpg" alt="Memory 8"></div>
-    <div class="mySlides fade"><img src="P9.jpg" alt="Memory 9"></div>
-    <div class="mySlides fade"><img src="P10.jpg" alt="Memory 10"></div>
-    <div class="mySlides fade"><img src="P11.jpg" alt="Memory 11"></div>
-    <div class="mySlides fade"><img src="P12.jpg" alt="Memory 12"></div>
+    <!-- Photo Carousel -->
+    <div class="slideshow-container">
+      <div class="mySlides fade"><img src="P1.jpg" alt="Memory 1"></div>
+      <div class="mySlides fade"><img src="P2.jpg" alt="Memory 2"></div>
+      <div class="mySlides fade"><img src="P3.jpg" alt="Memory 3"></div>
+      <div class="mySlides fade"><img src="P4.jpg" alt="Memory 4"></div>
+      <div class="mySlides fade"><img src="P5.jpg" alt="Memory 5"></div>
+      <div class="mySlides fade"><img src="P6.jpg" alt="Memory 6"></div>
+      <div class="mySlides fade"><img src="P7.jpg" alt="Memory 7"></div>
+      <div class="mySlides fade"><img src="P8.jpg" alt="Memory 8"></div>
+      <div class="mySlides fade"><img src="P9.jpg" alt="Memory 9"></div>
+      <div class="mySlides fade"><img src="P10.jpg" alt="Memory 10"></div>
+      <div class="mySlides fade"><img src="P11.jpg" alt="Memory 11"></div>
+      <div class="mySlides fade"><img src="P12.jpg" alt="Memory 12"></div>
+    </div>
+
+    <footer>With Love ❤️ Shubham & Priya | 29th Nov, 2025</footer>
   </div>
-
-  <footer>With Love ❤️ Shubham & Priya | 29th Nov, 2025</footer>
 
   <script>
     // Countdown
