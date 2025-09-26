@@ -8,59 +8,67 @@
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       text-align: center;
-      background: linear-gradient(135deg, #ffdde1, #ee9ca7);
-      color: #222;
       margin: 0;
       padding: 0;
+      color: #fff;
+      overflow-x: hidden;
     }
 
-    /* Subtle Save the Date banner */
+    /* 🌌 Night sky background */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+      z-index: -2;
+    }
+
+    /* Twinkling stars */
+    .stars {
+      position: fixed;
+      width: 100%; height: 100%;
+      background: transparent url("https://www.transparenttextures.com/patterns/stardust.png") repeat;
+      animation: twinkle 60s linear infinite;
+      z-index: -1;
+    }
+
+    @keyframes twinkle {
+      from { background-position: 0 0; }
+      to { background-position: -10000px 5000px; }
+    }
+
     .banner {
-      background: linear-gradient(90deg, #fff5f7, #ffe5ec); /* soft pastel */
-      color: #b30000;
+      background: rgba(255, 245, 247, 0.2);
+      color: #ffcccc;
       font-size: 1.1rem;
       font-weight: 600;
       font-family: 'Georgia', serif;
       padding: 6px 10px;
       margin: 0;
-      letter-spacing: 1px;
-      text-transform: capitalize;
-      border-top: 2px solid #e6b800;
-      border-bottom: 2px solid #e6b800;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.08);
-    }
-
-    .container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
-      min-height: 100vh;
-      padding: 20px;
+      border-top: 2px solid #ffb6c1;
+      border-bottom: 2px solid #ffb6c1;
     }
 
     h1 {
       margin-top: 20px;
       font-size: 2.8rem;
-      color: #b30000;
+      color: #ff4d6d;
     }
 
     #countdown {
       font-size: 2rem;
       margin: 15px 0 30px 0;
-      color: #222;
       font-weight: bold;
     }
 
-    /* Slideshow styles */
     .slideshow-container {
-      width: 45%;
+      width: 80%;
       max-width: 550px;
-      position: relative;
       margin: 20px auto;
       border-radius: 12px;
       overflow: hidden;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.6);
     }
 
     .mySlides {
@@ -73,105 +81,87 @@
       border-radius: 12px;
     }
 
-    /* Fade animation */
-    .fade {
-      animation-name: fade;
-      animation-duration: 1.5s;
+    /* 💖 Surprise Button */
+    .surprise-btn {
+      background: #ff4d6d;
+      color: #fff;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 50px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      margin-top: 20px;
+      box-shadow: 0 0 15px rgba(255,77,109,0.8);
+      transition: 0.3s;
+    }
+    .surprise-btn:hover {
+      background: #ff3355;
+      box-shadow: 0 0 25px rgba(255,77,109,1);
     }
 
-    @keyframes fade {
-      from {opacity: .4}
-      to {opacity: 1}
+    .hidden-message {
+      display: none;
+      margin-top: 20px;
+      font-size: 1.4rem;
+      color: #ffcccc;
+      font-family: 'Dancing Script', cursive;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.8);}
+      to { opacity: 1; transform: scale(1);}
     }
 
     footer {
       margin: 25px 0;
       font-size: 1.2rem;
-      color: #222;
+      color: #ddd;
       font-weight: 500;
     }
 
-    /* Floating hearts (bottom to top) */
-    .heart {
-      position: fixed;
-      bottom: -20px; /* start below viewport */
-      color: #b30000;
+    /* Confetti hearts */
+    .confetti {
+      position: absolute;
       font-size: 20px;
-      animation: rise linear forwards;
-      z-index: 9999;
       pointer-events: none;
+      animation: fall 2s linear forwards;
     }
 
-    @keyframes rise {
+    @keyframes fall {
       to {
-        transform: translateY(-110vh);
+        transform: translateY(100vh) rotate(360deg);
         opacity: 0;
-      }
-    }
-
-    /* Responsive Design */
-    @media (max-width: 768px) {
-      .banner {
-        font-size: 1rem;
-        padding: 5px 8px;
-      }
-
-      h1 {
-        font-size: 2rem;
-        margin-top: 15px;
-      }
-
-      #countdown {
-        font-size: 1.5rem;
-        margin-bottom: 20px;
-      }
-
-      .slideshow-container {
-        width: 80%; 
-        max-width: 90%;
-        margin: 15px auto;
-      }
-
-      footer {
-        font-size: 1rem;
-        margin-top: 20px;
-      }
-    }
-
-    @media (max-width: 480px) {
-      h1 {
-        font-size: 1.6rem;
-      }
-      #countdown {
-        font-size: 1.2rem;
       }
     }
   </style>
 </head>
 <body>
 
-  <!-- Subtle Save the Date banner -->
+  <!-- Stars background -->
+  <div class="stars"></div>
+
+  <!-- Banner -->
   <div class="banner">💍 Save the Date — 29th November 2025 💌</div>
 
   <div class="container">
-    <!-- Restored heading -->
     <h1>❤️ Shubham & Priya ❤️<br>Wedding Countdown</h1>
     <div id="countdown"></div>
 
-    <!-- Photo Carousel -->
+    <!-- Slideshow -->
     <div class="slideshow-container">
       <div class="mySlides fade"><img src="P1.jpg" alt="Memory 1"></div>
       <div class="mySlides fade"><img src="P2.jpg" alt="Memory 2"></div>
       <div class="mySlides fade"><img src="P3.jpg" alt="Memory 3"></div>
       <div class="mySlides fade"><img src="P4.jpg" alt="Memory 4"></div>
       <div class="mySlides fade"><img src="P5.jpg" alt="Memory 5"></div>
-      <div class="mySlides fade"><img src="P6.jpg" alt="Memory 6"></div>
-      <div class="mySlides fade"><img src="P7.jpg" alt="Memory 7"></div>
-      <div class="mySlides fade"><img src="P8.jpg" alt="Memory 8"></div>
-      <div class="mySlides fade"><img src="P9.jpg" alt="Memory 9"></div>
-      <div class="mySlides fade"><img src="P10.jpg" alt="Memory 10"></div>
-      <div class="mySlides fade"><img src="P11.jpg" alt="Memory 11"></div>
-      <div class="mySlides fade"><img src="P12.jpg" alt="Memory 12"></div>
+    </div>
+
+    <!-- 💖 Surprise Button -->
+    <button class="surprise-btn" onclick="revealMessage()">Click Me 💌</button>
+    <div class="hidden-message" id="hiddenMessage">
+      Priya ❤️ You’re the most beautiful part of my life.  
+      I can’t wait to call you my forever. 💍
     </div>
 
     <footer>With Love ❤️ Shubham & Priya | 29th Nov, 2025</footer>
@@ -198,10 +188,9 @@
       }
     }, 1000);
 
-    // Photo carousel
+    // Slideshow
     let slideIndex = 0;
     showSlides();
-
     function showSlides() {
       let slides = document.getElementsByClassName("mySlides");
       for (let i = 0; i < slides.length; i++) {
@@ -213,21 +202,25 @@
       setTimeout(showSlides, 3500);
     }
 
-    // Floating hearts (bottom to top)
-    function createHeart() {
-      const heart = document.createElement("div");
-      heart.className = "heart";
-      heart.innerText = "❤️";
-      heart.style.left = Math.random() * 100 + "vw";
-      heart.style.animationDuration = (2 + Math.random() * 3) + "s"; 
-      document.body.appendChild(heart);
-
-      setTimeout(() => {
-        heart.remove();
-      }, 5000);
+    // 💖 Reveal hidden message
+    function revealMessage() {
+      document.getElementById("hiddenMessage").style.display = "block";
     }
 
-    setInterval(createHeart, 900);
+    // 🎊 Love Confetti on click
+    document.addEventListener("click", function(e) {
+      for (let i = 0; i < 10; i++) {
+        let confetti = document.createElement("div");
+        confetti.className = "confetti";
+        confetti.innerText = ["❤️","💖","🌹","💌"][Math.floor(Math.random()*4)];
+        confetti.style.left = (e.pageX + Math.random()*50 - 25) + "px";
+        confetti.style.top = (e.pageY + Math.random()*50 - 25) + "px";
+        confetti.style.fontSize = (15 + Math.random()*20) + "px";
+        document.body.appendChild(confetti);
+
+        setTimeout(() => confetti.remove(), 2000);
+      }
+    });
   </script>
 </body>
 </html>
