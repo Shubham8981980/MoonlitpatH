@@ -41,7 +41,7 @@
     .banner {
       background: rgba(255, 245, 247, 0.2);
       color: #ffcccc;
-      font-size: 1.1rem;
+      font-size: 1rem;
       font-weight: 600;
       font-family: 'Georgia', serif;
       padding: 6px 10px;
@@ -52,19 +52,20 @@
 
     h1 {
       margin-top: 20px;
-      font-size: 2.8rem;
+      font-size: 1.8rem;  /* smaller */
       color: #ff4d6d;
+      white-space: nowrap; /* keep names in one line */
     }
 
     #countdown {
-      font-size: 2rem;
-      margin: 15px 0 30px 0;
+      font-size: 1.4rem;
+      margin: 10px 0 20px 0;
       font-weight: bold;
     }
 
     .slideshow-container {
       width: 80%;
-      max-width: 550px;
+      max-width: 450px;
       margin: 20px auto;
       border-radius: 12px;
       overflow: hidden;
@@ -86,53 +87,53 @@
       background: #ff4d6d;
       color: #fff;
       border: none;
-      padding: 12px 24px;
-      border-radius: 50px;
-      font-size: 1.2rem;
+      padding: 10px 20px;
+      border-radius: 40px;
+      font-size: 1rem;
       cursor: pointer;
-      margin-top: 20px;
-      box-shadow: 0 0 15px rgba(255,77,109,0.8);
+      margin-top: 15px;
+      box-shadow: 0 0 10px rgba(255,77,109,0.7);
       transition: 0.3s;
     }
     .surprise-btn:hover {
       background: #ff3355;
-      box-shadow: 0 0 25px rgba(255,77,109,1);
+      box-shadow: 0 0 18px rgba(255,77,109,1);
     }
 
     .hidden-message {
       display: none;
-      margin-top: 20px;
-      font-size: 1.4rem;
+      margin-top: 15px;
+      font-size: 1.2rem;
       color: #ffcccc;
       font-family: 'Dancing Script', cursive;
       animation: fadeIn 2s ease-in-out;
+      white-space: pre-line; /* keep line breaks */
     }
 
     @keyframes fadeIn {
-      from { opacity: 0; transform: scale(0.8);}
+      from { opacity: 0; transform: scale(0.9);}
       to { opacity: 1; transform: scale(1);}
     }
 
     footer {
-      margin: 25px 0;
-      font-size: 1.2rem;
+      margin: 20px 0;
+      font-size: 1rem;
       color: #ddd;
       font-weight: 500;
     }
 
-    /* Confetti hearts */
-    .confetti {
+    /* ❤️ Rising Hearts on touch */
+    .touch-heart {
       position: absolute;
-      font-size: 20px;
+      font-size: 14px;
+      color: red;
+      animation: rise 1.5s linear forwards;
       pointer-events: none;
-      animation: fall 2s linear forwards;
     }
 
-    @keyframes fall {
-      to {
-        transform: translateY(100vh) rotate(360deg);
-        opacity: 0;
-      }
+    @keyframes rise {
+      0% { transform: translateY(0) scale(1); opacity: 1; }
+      100% { transform: translateY(-100px) scale(1.5); opacity: 0; }
     }
   </style>
 </head>
@@ -145,7 +146,7 @@
   <div class="banner">💍 Save the Date — 29th November 2025 💌</div>
 
   <div class="container">
-    <h1>❤️ Shubham & Priya ❤️<br>Wedding Countdown</h1>
+    <h1>❤️ Shubham & Priya ❤️ Wedding Countdown</h1>
     <div id="countdown"></div>
 
     <!-- Slideshow -->
@@ -204,22 +205,21 @@
 
     // 💖 Reveal hidden message
     function revealMessage() {
-      document.getElementById("hiddenMessage").style.display = "block";
+      const msg = document.getElementById("hiddenMessage");
+      msg.style.display = "block";
     }
 
-    // 🎊 Love Confetti on click
+    // ❤️ Rising Hearts on touch anywhere
     document.addEventListener("click", function(e) {
-      for (let i = 0; i < 10; i++) {
-        let confetti = document.createElement("div");
-        confetti.className = "confetti";
-        confetti.innerText = ["❤️","💖","🌹","💌"][Math.floor(Math.random()*4)];
-        confetti.style.left = (e.pageX + Math.random()*50 - 25) + "px";
-        confetti.style.top = (e.pageY + Math.random()*50 - 25) + "px";
-        confetti.style.fontSize = (15 + Math.random()*20) + "px";
-        document.body.appendChild(confetti);
+      let heart = document.createElement("div");
+      heart.className = "touch-heart";
+      heart.innerText = "❤️";
+      heart.style.left = e.pageX + "px";
+      heart.style.top = e.pageY + "px";
+      heart.style.fontSize = (12 + Math.random()*10) + "px";
+      document.body.appendChild(heart);
 
-        setTimeout(() => confetti.remove(), 2000);
-      }
+      setTimeout(() => heart.remove(), 1500);
     });
   </script>
 </body>
