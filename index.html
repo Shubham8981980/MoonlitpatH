@@ -100,34 +100,25 @@
       box-shadow: 0 0 18px rgba(255,77,109,1);
     }
 
-    /* ✨ Typing / fade animation for quotes */
+    /* ✨ Quotes (fade in + centered) */
     .hidden-message {
       display: none;
-      margin-top: 15px;
-      font-size: 1.2rem;
+      margin-top: 20px;
+      font-size: 1.3rem;
       color: #ffcccc;
       font-family: 'Dancing Script', cursive;
       white-space: pre-line;
-      overflow: hidden;
-      border-right: 2px solid #ffcccc;
-      width: fit-content;
+      max-width: 80%;
       margin-left: auto;
       margin-right: auto;
+      line-height: 1.6;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
     }
 
-    .typing {
-      display: inline-block;
-      animation: typing 3s steps(40, end), blink 0.75s step-end infinite;
-    }
-
-    @keyframes typing {
-      from { width: 0 }
-      to { width: 100% }
-    }
-
-    @keyframes blink {
-      from, to { border-color: transparent }
-      50% { border-color: #ffcccc; }
+    .show {
+      display: block;
+      opacity: 1;
     }
 
     footer {
@@ -215,7 +206,7 @@
       setTimeout(showSlides, 3500);
     }
 
-    // 💖 Quotes with typing effect
+    // 💖 Quotes (fade in effect)
     const quotes = [
       "Priya ❤️ You’re the most beautiful part of my life.\nI can’t wait to call you my forever. 💍",
       "Every moment with you feels like a fairytale come true. ✨",
@@ -230,12 +221,11 @@
 
     function showNextQuote() {
       msgEl.style.display = "block";
-      msgEl.classList.remove("typing"); // reset animation
-      void msgEl.offsetWidth; // restart CSS animation trick
+      msgEl.classList.remove("show");
+      void msgEl.offsetWidth; // restart transition
       msgEl.innerText = quotes[quoteIndex];
-      msgEl.classList.add("typing");
-
-      quoteIndex = (quoteIndex + 1) % quotes.length; // loop through quotes
+      msgEl.classList.add("show");
+      quoteIndex = (quoteIndex + 1) % quotes.length;
     }
 
     // ❤️ Rising Hearts on touch anywhere
