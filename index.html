@@ -100,19 +100,34 @@
       box-shadow: 0 0 18px rgba(255,77,109,1);
     }
 
+    /* ✨ Typing / fade animation for quotes */
     .hidden-message {
       display: none;
       margin-top: 15px;
       font-size: 1.2rem;
       color: #ffcccc;
       font-family: 'Dancing Script', cursive;
-      animation: fadeIn 2s ease-in-out;
-      white-space: pre-line; /* keep line breaks */
+      white-space: pre-line;
+      overflow: hidden;
+      border-right: 2px solid #ffcccc;
+      width: fit-content;
+      margin-left: auto;
+      margin-right: auto;
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: scale(0.9);}
-      to { opacity: 1; transform: scale(1);}
+    .typing {
+      display: inline-block;
+      animation: typing 3s steps(40, end), blink 0.75s step-end infinite;
+    }
+
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 100% }
+    }
+
+    @keyframes blink {
+      from, to { border-color: transparent }
+      50% { border-color: #ffcccc; }
     }
 
     footer {
@@ -159,11 +174,8 @@
     </div>
 
     <!-- 💖 Surprise Button -->
-    <button class="surprise-btn" onclick="revealMessage()">Click Me 💌</button>
-    <div class="hidden-message" id="hiddenMessage">
-      Priya ❤️ You’re the most beautiful part of my life.  
-      I can’t wait to call you my forever. 💍
-    </div>
+    <button class="surprise-btn" onclick="showNextQuote()">Click Me 💌</button>
+    <div class="hidden-message" id="hiddenMessage"></div>
   </div>
 
   <script>
@@ -201,10 +213,27 @@
       setTimeout(showSlides, 3500);
     }
 
-    // 💖 Reveal hidden message
-    function revealMessage() {
-      const msg = document.getElementById("hiddenMessage");
-      msg.style.display = "block";
+    // 💖 Quotes with typing effect
+    const quotes = [
+      "Priya ❤️ You’re the most beautiful part of my life.\nI can’t wait to call you my forever. 💍",
+      "Every moment with you feels like a fairytale come true. ✨",
+      "You are my today and all of my tomorrows. ❤️",
+      "I found my home in your arms, my love. 🏡💕",
+      "Together is my favorite place to be. 💑",
+      "Forever isn’t long enough with you, Priya. ♾️💖"
+    ];
+
+    let quoteIndex = 0;
+    const msgEl = document.getElementById("hiddenMessage");
+
+    function showNextQuote() {
+      msgEl.style.display = "block";
+      msgEl.classList.remove("typing"); // reset animation
+      void msgEl.offsetWidth; // restart CSS animation trick
+      msgEl.innerText = quotes[quoteIndex];
+      msgEl.classList.add("typing");
+
+      quoteIndex = (quoteIndex + 1) % quotes.length; // loop through quotes
     }
 
     // ❤️ Rising Hearts on touch anywhere
